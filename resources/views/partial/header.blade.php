@@ -131,8 +131,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/list-medicines' || $_SERVER['REQUEST_URI'] == '/admin/list-sicks') ? 'menu-open' : ''; ?>">
-                    <a href="#" class="nav-link <?= ($_SERVER['REQUEST_URI'] == '/admin/list-medicines' || $_SERVER['REQUEST_URI'] == '/admin/list-sicks') ? 'active' : ''; ?>">
+                <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/import-medicines' || $_SERVER['REQUEST_URI'] == '/admin/list-sicks') ? 'menu-open' : ''; ?>">
+                    <a href="#" class="nav-link <?= ($_SERVER['REQUEST_URI'] == '/admin/import-medicines' || $_SERVER['REQUEST_URI'] == '/admin/list-sicks') ? 'active' : ''; ?>">
                         <i class="nav-icon fab fa-elementor"></i>
                         <p>
                             Quản lý danh mục
@@ -141,7 +141,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/list-medicines" class="nav-link <?= $_SERVER['REQUEST_URI'] == '/admin/list-medicines' ? 'active' : ''; ?>">
+                            <a href="/admin/import-medicines" class="nav-link <?= $_SERVER['REQUEST_URI'] == '/admin/import-medicines' ? 'active' : ''; ?>">
                                 <i class="fa-solid fa-pills nav-icon ml-2"></i>
                                 <p>Danh mục thuốc</p>
                             </a>
@@ -154,8 +154,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/list-foods' || $_SERVER['REQUEST_URI'] == '/admin/list-seeds' || $_SERVER['REQUEST_URI'] == '/admin/list-tools' || $_SERVER['REQUEST_URI'] == '/admin/import-medicines') ? 'menu-open' : ''; ?>">
-                    <a href="#" class="nav-link <?= ($_SERVER['REQUEST_URI'] == '/admin/list-foods' || $_SERVER['REQUEST_URI'] == '/admin/list-seeds' || $_SERVER['REQUEST_URI'] == '/admin/list-tools' || $_SERVER['REQUEST_URI'] == '/admin/import-medicines') ? 'active' : ''; ?>">
+                <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/import-foods' || $_SERVER['REQUEST_URI'] == '/admin/list-seeds' || $_SERVER['REQUEST_URI'] == '/admin/import-tools' || $_SERVER['REQUEST_URI'] == '/admin/import-medicines') ? 'menu-open' : ''; ?>">
+                    <a href="#" class="nav-link <?= ($_SERVER['REQUEST_URI'] == '/admin/import-foods' || $_SERVER['REQUEST_URI'] == '/admin/list-seeds' || $_SERVER['REQUEST_URI'] == '/admin/import-tools' || $_SERVER['REQUEST_URI'] == '/admin/import-medicines') ? 'active' : ''; ?>">
                         <i class="nav-icon fa-solid fa-arrow-right-to-bracket"></i>
                         <p>
                             Quản lý nhập
@@ -170,13 +170,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/list-foods" class="nav-link <?= $_SERVER['REQUEST_URI'] == '/admin/list-foods' ? 'active' : ''; ?>">
+                            <a href="/admin/import-foods" class="nav-link <?= $_SERVER['REQUEST_URI'] == '/admin/import-foods' ? 'active' : ''; ?>">
                                 <i class="fa-solid fa-fish nav-icon ml-2"></i>
                                 <p>Quản lý nhập thức ăn</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/list-tools" class="nav-link <?= $_SERVER['REQUEST_URI'] == '/admin/list-tools' ? 'active' : ''; ?>">
+                            <a href="/admin/import-tools" class="nav-link <?= $_SERVER['REQUEST_URI'] == '/admin/import-tools' ? 'active' : ''; ?>">
                                 <i class="fa-solid fa-screwdriver-wrench nav-icon ml-2"></i>
                                 <p>Quản lý nhập công cụ</p>
                             </a>

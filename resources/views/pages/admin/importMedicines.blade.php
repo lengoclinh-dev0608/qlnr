@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Admin - Quản lý thuốc')
+@section('title', 'Admin - Quản lý nhập thuốc')
 
 @section('style-libraries')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
@@ -25,13 +25,13 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Quản lý thuốc</h1>
+          <h1>Danh sách hóa đơn nhập thuốc</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Quản lý danh mục</li>
-            <li class="breadcrumb-item active">Danh mục thuốc</li>
+            <li class="breadcrumb-item">Quản lý nhập</li>
+            <li class="breadcrumb-item active">Quản lý nhập thuốc</li>
           </ol>
         </div>
       </div>
@@ -114,8 +114,11 @@
             <tr>
               <th class="text-center">ID</th>
               <th class="text-center">Tên thuốc</th>
-              <th class="text-center">Chỉ định</th>
-              <th class="text-center">Hướng dẫn sử dụng</th>
+              <th class="text-center">Ngày nhập</th>
+              <th class="text-center">Số lượng</th>
+              <th class="text-center">Đơn giá</th>
+              <th class="text-center">Thành tiền</th>
+              <th class="text-center">Nhân viên</th>
               <th data-orderable="false" class="text-center">Thao tác</th>
               <th data-orderable="false" class="text-center">
                 <input class="checkedAll" name="deleteMulti[]" type="checkbox">
@@ -123,14 +126,18 @@
             </tr>
           </thead>
           <tbody id="dataTable">
+
             <?php
             foreach ($medicines as $medicine) {
             ?>
               <tr class="text-center">
-                <td class="align-middle"><?= $medicine->THUOC_ID ?></td>
-                <td class="align-middle"><?= $medicine->TENTHUOC ?></td>
-                <td class="align-middle"><?= $medicine->benh->TEN_BENH ?></td>
-                <td class="align-middle"><?= $medicine->HUONGDAN ?></td>
+                <td class="align-middle"><?= $medicine->pnt->STT_PNT ?></td>
+                <td class="align-middle"><?= $medicine->thuoc->TENTHUOC ?></td>
+                <td class="align-middle"><?= $medicine->pnt->NGAYNHAP ?></td>
+                <td class="align-middle"><?= $medicine->SOLUONG ?></td>
+                <td class="align-middle"><?= number_format($medicine->DONGIA, 0, ",", ".") . " vnđ" ?></td>
+                <td class="align-middle"><?= number_format($medicine->SOLUONG * $medicine->DONGIA, 0, ",", ".") . " vnđ" ?></td>
+                <td class="align-middle"><?= $medicine->pnt->nhanvien->NV_HO . " " . $medicine->pnt->nhanvien->NV_TEN ?></td>
                 <td class="project-actions text-right text-center align-middle">
                   <a class="btn btn-primary btn-sm" href="#">
                     <i class="fas fa-folder">
@@ -158,15 +165,17 @@
             }
 
             ?>
-
           </tbody>
 
           <tfoot>
             <tr>
               <th class="text-center">ID</th>
               <th class="text-center">Tên thuốc</th>
-              <th class="text-center">Chỉ định</th>
-              <th class="text-center">Hướng dẫn sử dụng</th>
+              <th class="text-center">Ngày nhập</th>
+              <th class="text-center">Số lượng</th>
+              <th class="text-center">Đơn giá</th>
+              <th class="text-center">Thành tiền</th>
+              <th class="text-center">Nhân viên</th>
               <th data-orderable="false" class="text-center">Thao tác</th>
               <th data-orderable="false" class="text-center">
                 <input class="checkedAll" name="deleteMulti[]" type="checkbox">
@@ -185,7 +194,7 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Thuốc mới</h4>
+            <h4 class="modal-title">Thông tin con thuốc</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -625,7 +634,7 @@
                 alert('Đã cập nhật thành công');
                 document.querySelector("input[name=book]").value = data.bookName;
               }
-              document.querySelector('#btnCloseEdit').click();
+              document.querySelector('#btnClomedicineit').click();
               // bookInput.value = '';
               reload();
 

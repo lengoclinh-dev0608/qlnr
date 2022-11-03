@@ -12,6 +12,7 @@ class SeedController extends Controller
     public function getSeeds()
     {
         $this->data['seeds'] = Seed::all();
+        // $this->data['seeds'] = Seed::with(relations: 'Snack')->get();
         return view('pages.admin.listSeeds', $this->data);
     }
 }

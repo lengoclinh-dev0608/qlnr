@@ -117,6 +117,7 @@
               <th class="text-center">Ngày nhập</th>
               <th class="text-center">Số lượng</th>
               <th class="text-center">Đơn giá</th>
+              <th class="text-center">Thành tiền</th>
               <th class="text-center">Nhân viên</th>
               <th data-orderable="false" class="text-center">Thao tác</th>
               <th data-orderable="false" class="text-center">
@@ -130,12 +131,13 @@
             foreach ($foods as $food) {
             ?>
               <tr class="text-center">
-                <td class="align-middle"><?= $food->STTPNTA ?></td>
-                <td class="align-middle"><?= $food->THUCAN_ID ?></td>
-                <td class="align-middle"><?= $food->NGAY ?></td>
+                <td class="align-middle"><?= $food->pnta->STT_PNTA ?></td>
+                <td class="align-middle"><?= $food->thucan->TENTHUCAN ?></td>
+                <td class="align-middle"><?= $food->pnta->NGAYNHAP ?></td>
                 <td class="align-middle"><?= $food->SOLUONG ?></td>
-                <td class="align-middle"><?= $food->DONGIA ?></td>
-                <td class="align-middle"><?= $food->NV_ID ?></td>
+                <td class="align-middle"><?= number_format($food->DONGIA, 0, ",", ".") . " vnđ" ?></td>
+                <td class="align-middle"><?= number_format($food->SOLUONG * $food->DONGIA, 0, ",", ".") . " vnđ" ?></td>
+                <td class="align-middle"><?= $food->pnta->nhanvien->NV_HO . " " . $food->pnta->nhanvien->NV_TEN ?></td>
                 <td class="project-actions text-right text-center align-middle">
                   <a class="btn btn-primary btn-sm" href="#">
                     <i class="fas fa-folder">
@@ -172,6 +174,7 @@
               <th class="text-center">Ngày nhập</th>
               <th class="text-center">Số lượng</th>
               <th class="text-center">Đơn giá</th>
+              <th class="text-center">Thành tiền</th>
               <th class="text-center">Nhân viên</th>
               <th data-orderable="false" class="text-center">Thao tác</th>
               <th data-orderable="false" class="text-center">

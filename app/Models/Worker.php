@@ -5,12 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tool extends Model
+class Worker extends Model
 {
     use HasFactory;
-    protected $table = 'congcu';
+    protected $table = 'nhanvien';
     protected $fillable = [
-        'CONGCU_ID',
-        'TENCONGCU'
+        'NV_ID',
+        'NV_HO',
+        'NV_TEN',
+        'NV_TAIKHOAN',
+        'NV_MATKHAU'
     ];
 }
