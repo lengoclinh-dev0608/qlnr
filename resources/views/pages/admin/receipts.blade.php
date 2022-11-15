@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Admin - Quản lý thuốc')
+@section('title', 'Admin - Danh sách phiếu xuất')
 
 @section('style-libraries')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
@@ -25,13 +25,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Quản lý thuốc</h1>
+          <h1>Danh sách phiếu xuất</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Quản lý danh mục</li>
-            <li class="breadcrumb-item active">Danh mục thuốc</li>
+            <li class="breadcrumb-item active">Danh sách phiếu xuất</li>
           </ol>
         </div>
       </div>
@@ -112,10 +111,14 @@
         <table id="example2" class="table table-bordered table-hover">
           <thead>
             <tr>
-              <th class="text-center">ID</th>
-              <th class="text-center">Tên thuốc</th>
-              <th class="text-center">Chỉ định</th>
-              <th class="text-center">Hướng dẫn sử dụng</th>
+              <th class="text-center">STT</th>
+              <th class="text-center">Lứa rắn</th>
+              <th class="text-center">Ngày bán</th>
+              <th class="text-center">Hình thức bán</th>
+              <th class="text-center">Số lượng</th>
+              <th class="text-center">Đơn giá</th>
+              <th class="text-center">Thành tiền</th>
+              <th class="text-center">Nhân viên</th>
               <th data-orderable="false" class="text-center">Thao tác</th>
               <th data-orderable="false" class="text-center">
                 <input class="checkedAll" name="deleteMulti[]" type="checkbox">
@@ -123,14 +126,19 @@
             </tr>
           </thead>
           <tbody id="dataTable">
+
             <?php
-            foreach ($medicines as $medicine) {
+            foreach ($receipts as $receipt) {
             ?>
               <tr class="text-center">
-                <td class="align-middle"><?= $medicine->THUOC_ID ?></td>
-                <td class="align-middle"><?= $medicine->TENTHUOC ?></td>
-                <td class="align-middle"><?= $medicine->benh->TEN_BENH ?></td>
-                <td class="align-middle"><?= $medicine->HUONGDAN ?></td>
+                <td class="align-middle"><?= $receipt->phieuxuat->STTPHIEUXUAT ?></td>
+                <td class="align-middle"><?= $receipt->phieuxuat->luaran->LUARAN_ID ?></td>
+                <td class="align-middle"><?= $receipt->phieuxuat->NGAYBAN ?></td>
+                <td class="align-middle"><?= $receipt->hinhthucban->HTB_TEN ?></td>
+                <td class="align-middle"><?= number_format($receipt->SOLUONG, 0, ",", ".") ?></td>
+                <td class="align-middle"><?= number_format($receipt->DONGIA, 0, ",", ".") . " vnđ" ?></td>
+                <td class="align-middle"><?= number_format($receipt->SOLUONG * $receipt->DONGIA, 0, ",", ".") . " vnđ" ?></td>
+                <td class="align-middle"><?= $receipt->nhanvien->NV_HO . " " . $receipt->nhanvien->NV_TEN ?></td>
                 <td class="project-actions text-right text-center align-middle">
                   <a class="btn btn-primary btn-sm" href="#">
                     <i class="fas fa-folder">
@@ -156,17 +164,19 @@
               </tr>
             <?php
             }
-
             ?>
-
           </tbody>
 
           <tfoot>
             <tr>
-              <th class="text-center">ID</th>
-              <th class="text-center">Tên thuốc</th>
-              <th class="text-center">Chỉ định</th>
-              <th class="text-center">Hướng dẫn sử dụng</th>
+              <th class="text-center">STT</th>
+              <th class="text-center">Lứa rắn</th>
+              <th class="text-center">Ngày bán</th>
+              <th class="text-center">Hình thức bán</th>
+              <th class="text-center">Số lượng</th>
+              <th class="text-center">Đơn giá</th>
+              <th class="text-center">Thành tiền</th>
+              <th class="text-center">Nhân viên</th>
               <th data-orderable="false" class="text-center">Thao tác</th>
               <th data-orderable="false" class="text-center">
                 <input class="checkedAll" name="deleteMulti[]" type="checkbox">
@@ -185,7 +195,7 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Thuốc mới</h4>
+            <h4 class="modal-title">Thông tin phiếu xuất</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -208,13 +218,13 @@
 @stop
 
 @section('scripts')
-<script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+<script src="{{ asset('plugins/cbs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 
 <!-- Select2 -->
 </script>
-<!-- <script src="{{ asset('plugins/inputmask/jquery.inputmask.min.js') }}"></script> -->
+<script src="{{ asset('plugins/inputmask/jquery.inputmask.min.js') }}"></script>
 <!-- Summernote -->
-<!-- <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script> -->
+<script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
 <!-- SweetAlert2 -->
 <script src="{{ asset('plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 <!-- Toastr -->

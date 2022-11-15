@@ -15,6 +15,7 @@
     <!-- AdminLTE -->
     <link href="{{ asset('css/adminlte.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/font/fontawesome/css/all.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     @yield('style-libraries')
     {{--Styles custom--}}
     @yield('styles')

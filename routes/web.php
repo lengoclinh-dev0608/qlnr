@@ -10,6 +10,9 @@ use App\Http\Controllers\SeedController;
 use App\Http\Controllers\ImportFoodDetail;
 use App\Http\Controllers\ImportToolDetail;
 use App\Http\Controllers\ImportMedicineDetail;
+use App\Http\Controllers\WorkerController;
+use App\Http\Controllers\SellSnackDetail;
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,8 +30,8 @@ Route::get('/', function () {
 
 
 
-Route::prefix('admin')->group(function () {
-    Route::get('/', [testController::class, 'test']);
+Route::prefix('admin')->middleware('adminMiddleware')->group(function () {
+    Route::get('/', [testController::class, 'test'])->name('admin.home');
     Route::get('/list-snacks', [SnackController::class, 'getSnacks']);
     Route::get('/add-snack', [testController::class, 'addSnack']);
     Route::get('/list-medicines', [MedicineController::class, 'getMedicines']);
@@ -38,7 +41,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/import-foods', [ImportFoodDetail::class, 'getDetailImportFoods']);
     Route::get('/import-tools', [ImportToolDetail::class, 'getDetailImportTools']);
     Route::get('/import-medicines', [ImportMedicineDetail::class, 'getDetailImportMedicines']);
+    Route::get('/sell', [SellSnackDetail::class, 'getDetailSellSnacks']);
+    Route::get('/manage', [WorkerController::class, 'getWorkers']);
 });
 
-
-Route::get('/tests', [ToolController::class, 'index']);
+Route::prefix('auth')->group(function () {
+    Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+    Route::post('/login', [AuthController::class, 'handleLogin']);
+    Route::get('/logout', [AuthController::class, 'handleLogout'])->name('auth.logout');
+});

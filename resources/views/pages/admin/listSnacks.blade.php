@@ -83,7 +83,7 @@
               <div class="col-sm-3 col-md-12">
                 <div class="row">
                   <div class="col-sm-6 col-md-6">
-                    <button type="button" class="btn btn-block btn-primary"><a href="/admin/addBook" class="text-white h-100 w-100">Thêm</a></button>
+                    <button type="button" class="btn btn-block btn-primary"><a href="/admin/add-snack" class="text-white h-100 w-100">Thêm</a></button>
                   </div>
                   <div class="col-sm-6 col-md-6">
                     <button type="button" class="btn btn-danger btn-block btnDelete" value="${s.bookId}">

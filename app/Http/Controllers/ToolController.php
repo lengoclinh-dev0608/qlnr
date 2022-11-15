@@ -13,7 +13,7 @@ class ToolController extends Controller
     {
         $this->data['getAll'] = Tool::all();
         return response()->json([
-            'data' => $getAll
+            $data->getAll
         ], 200);
     }
 }

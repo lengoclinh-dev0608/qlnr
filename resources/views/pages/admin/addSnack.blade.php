@@ -71,12 +71,6 @@
                                     <input type="text" name="language" class="form-control" placeholder="Enter ...">
                                 </div>
 
-                                <div class="form-group">
-                                    <label>Thể loại</label>
-                                    <div id="addBookCategory" class="row ml-1">
-
-                                    </div>
-                                </div>
 
                             </div>
                             <div class="col-sm-6">
@@ -147,6 +141,8 @@
 @stop
 
 @section('scripts')
+
+<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 
 <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 

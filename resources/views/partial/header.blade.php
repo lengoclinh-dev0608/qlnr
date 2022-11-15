@@ -61,9 +61,12 @@
                     <i class="fas fa-key mr-2"></i> Thay đổi mật khẩu
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-sign-out-alt mr-2"></i> Đăng xuất
-                </a>
+                <form method="get" action="{{route('auth.logout')}}">
+                    <a class="dropdown-item">
+                        <i class="fas fa-sign-out-alt mr-2"></i> <input type="submit" value="Đăng xuất">
+                        @csrf()
+                    </a>
+                </form>
             </div>
 
         </li>
@@ -76,7 +79,7 @@
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
         <img src="/img/AdminLTELogo.png" alt="Bookstore Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">QLNR</span>
+        <span class="brand-text font-weight-light">RiVoiKC</span>
     </a>
 
     <!-- Sidebar -->
@@ -131,8 +134,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/import-medicines' || $_SERVER['REQUEST_URI'] == '/admin/list-sicks') ? 'menu-open' : ''; ?>">
-                    <a href="#" class="nav-link <?= ($_SERVER['REQUEST_URI'] == '/admin/import-medicines' || $_SERVER['REQUEST_URI'] == '/admin/list-sicks') ? 'active' : ''; ?>">
+                <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/list-medicines' || $_SERVER['REQUEST_URI'] == '/admin/list-sicks') ? 'menu-open' : ''; ?>">
+                    <a href="#" class="nav-link <?= ($_SERVER['REQUEST_URI'] == '/admin/list-medicines' || $_SERVER['REQUEST_URI'] == '/admin/list-sicks') ? 'active' : ''; ?>">
                         <i class="nav-icon fab fa-elementor"></i>
                         <p>
                             Quản lý danh mục
@@ -141,7 +144,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/import-medicines" class="nav-link <?= $_SERVER['REQUEST_URI'] == '/admin/import-medicines' ? 'active' : ''; ?>">
+                            <a href="/admin/list-medicines" class="nav-link <?= $_SERVER['REQUEST_URI'] == '/admin/list-medicines' ? 'active' : ''; ?>">
                                 <i class="fa-solid fa-pills nav-icon ml-2"></i>
                                 <p>Danh mục thuốc</p>
                             </a>
@@ -219,7 +222,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/gallery.html" class="nav-link">
+                    <a href="/admin/sell" class="nav-link <?= $_SERVER['REQUEST_URI'] == '/admin/sell' ? 'active' : ''; ?>">
                         <i class="nav-icon fa-solid fa-coins"></i>
                         <p>
                             Quản lý bán rắn
